@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-from cgitb import reset
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
