@@ -24,11 +24,12 @@ def index():
 
 @app.route('/result/<filename>', methods=['GET'])
 def result(filename):
-
-    result  = feature_selection.delay(filename)
-    #print(result.get()[0])
-    #return 'I am testing celery'
-    return render_template('Result.html',num = result.get()[0],feature = result.get()[1],acc = result.get()[2])#render_template('index.html')
+    if(filename != 'wait'):
+        global col_result
+        col_result  = feature_selection.delay(filename)
+        return render_template('Result.html',result = col_result)#render_template('index.html')
+    else:
+        return render_template('Result.html',result = col_result)
 
 @app.route('/upload',methods=['GET','POST'])
 def upload():

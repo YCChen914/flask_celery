@@ -28,9 +28,14 @@
         <h1 class="u-text u-text-1">Final Result</h1>
         <div class="u-container-style u-group u-shape-rectangle u-group-1">
           <div class="u-container-layout u-container-layout-1">
-            <p class="u-text u-text-2">{{num}}</p>
-            <p class="u-text u-text-3">{{feature}}</p>
-            <p class="u-text u-text-4">{{acc}}</p>
+            {% if result.ready() == True %}
+              <p class="u-text u-text-2">{{result.get()[0]}}</p>
+              <p class="u-text u-text-3">{{result.get()[1]}}</p>
+              <p class="u-text u-text-4">{{result.get()[2]}}</p>
+            {% else %}
+              <p class="u-text u-text-2">Please wait for the result</p>
+              <a href="./wait" class="u-active-palette-1-base u-align-center u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-8 u-text-active-white u-text-hover-white u-btn-2" data-animation-name="fadeIn" data-animation-duration="1000" data-animation-direction="Up" data-animation-delay="500">Click here to refresh the page</a>
+            {% endif %}
           </div>
         </div>
       </div>
